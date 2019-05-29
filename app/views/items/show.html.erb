@@ -1,0 +1,13 @@
+<h1> <%= @item.name %> </h1>
+<br><br>
+<%= @item.price %>
+<br><br>
+<%= submit_tag 'Add <%= @item.name %> to your cart!', carts_path %>
+<br><br>
+Below are user comments for <%= @item.name %> ...
+<br>
+<% @item.comments each do |comment| %>
+<ul>
+	<li> <%= comment.user.name %> - <%= comment.title %> - <%= comment.description %> - <%= comment.rating %></li>
+<% end %>
+</ul>
