@@ -1,6 +1,6 @@
 <h1> Sign up for our site </h1>
 <br><br>
-<%= form_for(@user) do |f| %>
+<%= form_for @user do |f| %>
 <%= f.label :name %>
 <%= f.text_field :name %><br>
 <%= f.label :password %>
@@ -8,3 +8,4 @@
 <%= f.label :password_confirmation %>
 <%= f.password_field :password_confirmation %><br>
 <%= f.submit %>
+<% end %>

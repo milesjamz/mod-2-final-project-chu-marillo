@@ -1,0 +1,17 @@
+<h2>
+  Welcome!
+</h2>
+
+<%= form_for @user do |f| %>
+  <%= f.label :name, "Username: " %>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <br>
+  <%= f.submit "Login" %>
+<% end %>
+
+<h3>
+  <%= link_to "Create a new account.", new_user_path %>
+</h3>
