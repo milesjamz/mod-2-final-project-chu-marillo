@@ -2,7 +2,7 @@
   Welcome!
 </h2>
 
-<%= form_for @user do |f| %>
+<%= form_for @user, url: '/' do |f| %>
   <%= f.label :name, "Username: " %>
   <%= f.text_field :name %>
   <br>
