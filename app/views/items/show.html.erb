@@ -1,13 +1,17 @@
 <h1> <%= @item.name %> </h1>
 <br><br>
-<%= @item.price %>
+$<%= @item.price %>
 <br><br>
-<%= submit_tag 'Add <%= @item.name %> to your cart!', carts_path %>
+<%= link_to "Add #{@item.name} to your cart!", item_path(@item) %>
 <br><br>
+<% if @item.comments.length == 0 %>
+	There are no comments yet for this item - add one below!
+<% else %>
 Below are user comments for <%= @item.name %> ...
 <br>
-<% @item.comments each do |comment| %>
-<ul>
-	<li> <%= comment.user.name %> - <%= comment.title %> - <%= comment.description %> - <%= comment.rating %></li>
 <% end %>
-</ul>
+<%= form_for(@comment, url: comments_path) do |f| %>
+	<%= f.text_field :description%>
+	<%= f.number_field :rating %>
+	<%= f.submit %>
+	<% end %>
