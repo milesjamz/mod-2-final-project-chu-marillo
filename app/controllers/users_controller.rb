@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
-# resources :users, only:[:show, :new, :create, :destroy]
 
 	def profile
 	end
 
 	def show
 		@user = User.find(params[:id])
+		@item = Item.find(params[:id])
+
 	end
 
 	def new
@@ -14,15 +15,15 @@ class UsersController < ApplicationController
 
 	def create
 		@user = User.create(user_params)
-		
+
 		if @user.valid? && @user.authenticate(params[:password])
-		redirect_to user_path(@user)
-		
+			redirect_to user_path(@user)
+
 		else
 			flash[:error] = @user.errors.full_messages
-		redirect_to new_user_path
+			redirect_to new_user_path
+		end
 	end
-end
 
 	def destroy
 
@@ -32,4 +33,5 @@ end
 	def user_params
 		params.require(:user).permit(:name, :password)
 	end
+
 end

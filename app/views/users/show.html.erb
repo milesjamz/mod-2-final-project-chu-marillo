@@ -24,8 +24,3 @@
 <h2>
   Welcome, <%= @user.name %>!
 </h2>
-
-<p>Category:</p>
-<%= collection_select :item, :catgory_id, Category.all, :id, :name %>
-<%= submit_tag "Search" %>
-<br><br>
