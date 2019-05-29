@@ -11,7 +11,6 @@ class SessionsController < ApplicationController
 		return redirect_to(controller: 'users', action: 'new') unless user
     session[:user_id] = user.id
     @user = user
-    # redirect_to controller: 'users', action: 'show'
     redirect_to user_path(@user)
 	end
 

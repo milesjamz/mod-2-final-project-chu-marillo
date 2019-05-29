@@ -1,5 +1,15 @@
 <h1> Sign up for our site </h1>
 <br><br>
+<% if flash.any? %>
+<ul>
+	<% flash[:error].each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+	<% end %>
+</ul>
+<% end %>
+
 <%= form_for @user do |f| %>
 <%= f.label :name %>
 <%= f.text_field :name %><br>
