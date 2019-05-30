@@ -1,31 +1,4 @@
-<style>
-  body {
-    background-color: linen;
-  }
-
-  navbar {
-    color: magenta;
-    margin-right: 100px;
-    margin-top: 20px;
-  }
-
-  h1 {
-    color: maroon;
-    margin-left: 512px;
-    margin-right: 512px;
-  }
-
-  h2 {
-    color: indigo;
-    margin-right: 200px;
-  }
-
-  p {
-    font-family: "Helvetica";
-    color: blue;
-    margin-right: 200px;
-  }
-</style>
+<link rel="stylesheet" type="text/css" href="users.scss" >
 <div id="navbar" >
 History  |  Cart  |  <%= link_to "Profile", "#{current_user.id}/profile"%>   |   <%= link_to "Logout", logout_path %>
 </div>

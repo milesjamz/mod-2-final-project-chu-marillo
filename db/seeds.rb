@@ -6,13 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
-Category.delete_all
-Item.delete_all
-Cart.delete_all
-
-
-
 cars = Category.create(name:'cars')
 guitars = Category.create(name:'guitars')
 cigars = Category.create(name:'cigars')
