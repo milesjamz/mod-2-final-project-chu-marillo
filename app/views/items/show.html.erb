@@ -1,8 +1,26 @@
 <h1> <%= @item.name %> </h1>
 <br><br>
-$<%= @item.price %>
-<br><br>
-<%= link_to "Add #{@item.name} to your cart!", item_path(@item) %>
+
+  <p><%= number_to_currency @item.price %>
+  <%= form_for @line_item do |f| %>
+    <%= f.hidden_field :item_id, value: @item.id %>
+    <%= f.label :item_quantity %>
+    <%= f.number_field :quantity %>
+    <%= f.submit "Add to cart" %>
+  <% end %></p>
+<br><br><br>
+
+<%= form_for(@comment, url: comments_path) do |f| %>
+	<%= f.label :comment_on_this_item %>
+	<%= f.text_area :description %> <br>
+	<%= f.label :rating %>
+	<%= f.number_field :rating %> <br>
+	<%= f.hidden_field :item_id, :value => @item.id %>
+	<%= f.hidden_field :user_id, :value => params[:id] %>
+	<%= f.submit %>
+	<% end %>
+
+
 <br><br>
 <% if @item.comments.length == 0 %>
 	There are no comments yet for this item - add one below!
@@ -16,13 +34,3 @@ Below are user comments for <%= @item.name %> ...
 <br>
 
 <% end %>
-
-<%= form_for(@comment, url: comments_path) do |f| %>
-	<%= f.label :item_description %>
-	<%= f.text_area :description %> <br>
-	<%= f.label :rating %>
-	<%= f.number_field :rating %> <br>
-	<%= f.hidden_field :item_id, :value => @item.id %>
-	<%= f.hidden_field :user_id, :value => params[:id] %>
-	<%= f.submit %>
-	<% end %>
