@@ -5,10 +5,10 @@ post '/', to: 'sessions#create'
 
 resources :users, only:[:show, :new, :create, :destroy]
 get 'users/profile', to: 'users#profile'
-
+resources :line_items
 resources :carts, only:[:show, :index, :new, :create, :edit, :update]
 # resources :categories, only:[:show]
-resources :items, only:[:show]
+resources :items
 resources :comments, only:[:new, :create, :destroy]
 
 end

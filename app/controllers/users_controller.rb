@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-# resources :users, only:[:show, :new, :create, :destroy]
 
 	def profile
 	end
