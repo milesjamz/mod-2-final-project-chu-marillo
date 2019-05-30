@@ -1,42 +1,20 @@
-<style>
-  body {
-    background-color: linen;
-  }
+<link rel="stylesheet" type="text/css" href="users.scss" >
 
-  h1 {
-    color: maroon;
-    margin-left: 500px;
-  }
-
-  h2 {
-    color: indigo;
-    margin-right: 200px;
-  }
-
-  p {
-    font-family: "Helvetica";
-    color: blue;
-    margin-right: 200px;
-  }
-</style>
+<div id="navbar" >
+History  |  Cart  |  <%= link_to "Profile", "#{current_user.id}/profile"%>   |   <%= link_to "Logout", logout_path %>
+</div>
 <h1> Welcome to our site! </h1>
 
-<%= link_to "Logout", logout_path %>
-
 <h2>
-  Welcome, <%= @user.name %>!
+  Name: <%= @user.name %>
 </h2>
-
-<%= link_to "Profile"%>
-
-<%= link_to "Profile", "#{current_user.id}/profile"%>
 
 <p>Category:</p>
 <%= collection_select :item, :category_id, Category.all, :id, :name %>
 <%= submit_tag "Search" %>
-<br><br>
 
+<p>Item:</p>
 <%= form_tag item_path, :method => 'get' do  %>
-  <%=  select_tag :item_id, options_for_select(Item.all.collect{ |c| [c.name, c.id] })  %>
+  <%=  select_tag :id, options_for_select(Item.all.collect{ |c| [c.name, c.id] })  %>
 <%= submit_tag "Get Items", :name => nil %>
 <% end %>
