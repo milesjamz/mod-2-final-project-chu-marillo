@@ -6,12 +6,14 @@ has_many :line_items
 has_many :carts, through: :line_items
 
 
-# def addme(item_id, current_user)
-# 	if session[:user][:cart] = open
-# 		lineitem.build WHERE the lineitem is the same as this item
-# 	else
-# 		Cart.create that gets assocriated with this user
-# 		AND this item is added to the cart
-# 	end
-#
+  private
+
+   def not_referenced_by_any_line_item
+    unless line_items.empty?
+      errors.add(:base, 'Line items present')
+      throw :abort
+    end
+   end
+
+
 end
