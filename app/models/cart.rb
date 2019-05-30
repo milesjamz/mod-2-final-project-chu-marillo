@@ -24,7 +24,7 @@ has_many :items, through: :line_items
   end
 
   def calculate_total
-    # self.line_items.collect { |item| item.product.price * item.quantity }.sum
+    self.line_items.collect { |item| item.product.price * item.quantity }.sum
   end
 
   private
