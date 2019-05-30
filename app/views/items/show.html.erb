@@ -23,6 +23,6 @@ Below are user comments for <%= @item.name %> ...
 	<%= f.label :rating %>
 	<%= f.number_field :rating %> <br>
 	<%= f.hidden_field :item_id, :value => @item.id %>
-	<%= f.hidden_field :user_id, :value => params[:id] %>
+	<%= f.hidden_field :user_id, :value => current_user.id %>
 	<%= f.submit %>
 	<% end %>

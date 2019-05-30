@@ -1,8 +1,7 @@
 <h1> Sign up for our site </h1>
-<br><br>
 <% if flash.any? %>
 <ul>
-	<% flash.each do |msg| %>
+	<% flash[:error].each do |msg| %>
 		<li>
 			<%= msg %>
 		</li>
