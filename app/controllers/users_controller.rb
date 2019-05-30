@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 		@user = User.create(user_params)
 		if @user.valid?
 			session[:user_id] = @user.id
+			@user.create_cart
 			redirect_to user_path(@user)
 		else
 			flash[:error] = @user.errors.full_messages

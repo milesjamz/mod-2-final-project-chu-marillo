@@ -12,10 +12,11 @@ def new
 end
 
   def create
+    current_active_cart = current_user.carts.last
     @item = Item.find(params[:line_item][:item_id])
-    @line_item = Cart.last.add_item(@item)
+    @line_item = current_active_cart.add_item(@item)
       if @line_item.save
-        redirect_to @line_item.cart
+        redirect_to current_active_cart
       else
         render :new
       end

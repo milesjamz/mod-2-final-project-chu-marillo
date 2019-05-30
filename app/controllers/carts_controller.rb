@@ -22,6 +22,12 @@ end
       end
   end
 
+  def delete
+    @cart = current_active_cart
+    @cart.line_items.delete_all
+    redirect_to cart_path(current_user.carts.last)
+  end
+
 private
 
     def set_cart
