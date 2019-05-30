@@ -41,6 +41,6 @@ History  |  Cart  |  <%= link_to "Profile", "#{current_user.id}/profile"%>   |  
 
 <p>Item:</p>
 <%= form_tag item_path, :method => 'get' do  %>
-  <%=  select_tag :item_id, options_for_select(Item.all.collect{ |c| [c.name, c.id] })  %>
+  <%=  select_tag :id, options_for_select(Item.all.collect{ |c| [c.name, c.id] })  %>
 <%= submit_tag "Get Items", :name => nil %>
 <% end %>
