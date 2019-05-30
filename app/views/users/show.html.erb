@@ -28,13 +28,12 @@
 </h2>
 
 <%= link_to "Profile"%>
-
 <p>Category:</p>
 <%= collection_select :item, :category_id, Category.all, :id, :name %>
 <%= submit_tag "Search" %>
 <br><br>
 
 <%= form_tag item_path, :method => 'get' do  %>
-  <%=  select_tag :item_id, options_for_select(Item.all.collect{ |c| [c.name, c.id] })  %>
+  <%=  select_tag :id, options_for_select(Item.all.collect{ |c| [c.name, c.id] })  %>
 <%= submit_tag "Get Items", :name => nil %>
 <% end %>

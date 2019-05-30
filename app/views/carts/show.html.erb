@@ -1,0 +1,20 @@
+<h1> cart for <%= @cart.user.name %> </h1>
+
+<% if @cart.status == false %>
+	This cart is checked out!
+	<% else %>
+	This cart is open, and you can add and/or delete more items before checking out.
+<% end %>
+<br><br>
+<% @cart.line_items.each do |line_item| %>
+
+
+	<%= line_item.quantity %> - <%= link_to line_item.item.name, line_item.item %> - each cost <%= number_to_currency line_item.item.price %> - <br><br>
+	<% end %><br><br>
+
+the cart's total price is <%= number_to_currency @cart.total_price %>
+<br><br>
+<% if @cart.status == true %>
+<%= link_to 'Checkout', users_path %><br><br>
+<% end %>
+<%= link_to "Go back to #{@cart.user.name}s home page", user_path(@cart.user) %>

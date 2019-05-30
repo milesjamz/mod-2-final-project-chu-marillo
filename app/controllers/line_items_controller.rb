@@ -13,8 +13,8 @@ end
 
   def create
     @item = Item.find(params[:line_item][:item_id])
-    @line_item = @cart.add_item(@item)
-      if line_item.save
+    @line_item = Cart.last.add_item(@item)
+      if @line_item.save
         redirect_to @line_item.cart
       else
         render :new
@@ -25,7 +25,6 @@ end
     @line_item.destroy
     redirect_to line_items_path
   end
-
 
   private
 
