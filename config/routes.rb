@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   resources :sessions, only:[:new, :create, :destroy]
   resources :line_items
 
-  get 'users/profile', to: 'users#profile'
+
+  get 'users/:id/profile', to: 'users#profile'
 
   resources :carts, only:[:show, :index, :new, :create, :edit, :update]
   resources :categories, only:[:show]

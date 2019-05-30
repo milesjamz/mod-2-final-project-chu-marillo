@@ -28,6 +28,9 @@
 </h2>
 
 <%= link_to "Profile"%>
+=======
+<%= link_to "Profile", "#{current_user.id}/profile"%>
+
 <p>Category:</p>
 <%= collection_select :item, :category_id, Category.all, :id, :name %>
 <%= submit_tag "Search" %>
