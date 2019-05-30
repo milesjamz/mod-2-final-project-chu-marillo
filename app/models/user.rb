@@ -9,5 +9,5 @@ class User < ApplicationRecord
   has_many :line_items, through: :carts
   has_many :comments
   has_many :items, through: :comments
-  
+
 end
