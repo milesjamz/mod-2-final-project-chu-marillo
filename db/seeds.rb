@@ -6,16 +6,28 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-cars = Category.create(name:'cars')
-guitars = Category.create(name:'guitars')
-cigars = Category.create(name:'cigars')
-headphones = Category.create(name:'headphones')
+Category.delete_all
+Item.delete_all
 
-ferrari = Item.create(name: "Ferrari Testarossa", price: 200_000, category_id: 1)
-ford = Item.create(name:"Ford Fusion", price: 20_000, category_id: 1)
-martin = Item.create(name:"Martin", price: 5_000, category_id: 2)
-cohiba = Item.create(name:"Cohiba", price: 150, category_id: 3)
-sennheiser = Item.create(name:"Sennheiser", price: 200, category_id: 4)
+cars = Category.create(name:'Cars')
+guitars = Category.create(name:'Guitars')
+headphones = Category.create(name:'Headphones')
+sports = Category.create(name:'Sporting Equipment')
 
-cart1 = Cart.create(status: true, user_id: 6, total_price: 0)
-cart2 = Cart.create(status: false, user_id: 6, total_price: 0)
+Item.create(name: "Ferrari 488", price: 250_000, category_id: 9)
+Item.create(name:"Fiat 500", price: 17_500, category_id: 9)
+Item.create(name:"Pontiac Aztek", price: 500, category_id: 9)
+
+Item.create(name:"Martin D-28", price: 2_700, category_id: 10)
+Item.create(name:"Fender Strat", price: 750, category_id: 10)
+Item.create(name:"Gibson Les Paul", price: 1_100, category_id: 10)
+
+Item.create(name:"Bose QuietComfort", price: 350, category_id: 11)
+Item.create(name:"Apple AirPods", price: 170, category_id: 11)
+Item.create(name:"Sennheiser HD820", price: 2_400, category_id: 11)
+
+Item.create(name:"Baseball", price: 45, category_id: 12)
+Item.create(name:"Basketball", price: 75, category_id: 12)
+Item.create(name:"Football", price: 20, category_id: 12)
+
+

@@ -16,9 +16,9 @@
 
   <%= form_for(@comment, url: comments_path) do |f| %>
   <%= f.label :item_description %>
-  <%= f.text_area :description %> <br>
+  <%= f.text_field :description %> <br>
   <%= f.label :rating %>
-  <%= f.number_field :rating %> <br>
+  <%= f.number_field(:rating, in: 1..10) %> <br>
   <%= f.hidden_field :item_id, :value => @item.id %>
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <%= f.submit %>
