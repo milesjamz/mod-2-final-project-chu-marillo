@@ -17,7 +17,7 @@ end
       if @line_item.save
         redirect_to current_active_cart
       else
-        render :new
+        redirect_to item_path(this_item)
       end
   end
 

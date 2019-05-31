@@ -2,6 +2,7 @@ class LineItem < ApplicationRecord
 
 belongs_to :item
 belongs_to :cart
+validates_inclusion_of :quantity, :in => 1..99
 
 
   def total_price

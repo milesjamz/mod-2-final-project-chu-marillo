@@ -5,14 +5,14 @@ class SessionsController < ApplicationController
 	end
 
 	def create
-		user = User.find_by(name: params[:name])
-		if user && user.authenticate(params[:password])
-			session[:user_id] = user.id
-    	@user = user
+		@user = User.find_by(name: params[:name])
+		if @user && @user.authenticate(params[:password])
+			session[:user_id] = @user.id
   		redirect_to user_path(@user)
 		else
-			# flash[:error] = user.errors.full_messages
-			render :new
+			flash[:error] = @user.errors.full_messages
+			flash[:error] << "Please check your username and password" 
+			redirect_to login_path
 		end
 	end
 

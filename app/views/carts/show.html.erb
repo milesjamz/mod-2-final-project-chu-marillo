@@ -8,7 +8,7 @@
 <br><br>
 <% @cart.line_items.each do |line_item| %>
 
-	<%= line_item.quantity %> - <%= link_to line_item.item.name, line_item.item %> - each cost <%= number_to_currency line_item.item.price %> - <br><br> 
+	<%= line_item.quantity %> - <%= link_to line_item.item.name, line_item.item %> - each cost <%= number_to_currency line_item.item.price %> - <br><br>   
 
 	<% end %><br><br>
 

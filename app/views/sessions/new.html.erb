@@ -1,6 +1,15 @@
 <h2>
   Welcome!
 </h2>
+<ul>
+	<% if flash.any? %>
+	<% flash[:error].each do |msg| %>
+	<li>
+		<%= msg %>
+	</li>
+	<% end %>
+<% end %>
+</ul>
 
 <%= form_tag sessions_path do %>
   <%= label_tag :name, "Username: " %>
