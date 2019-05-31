@@ -1,0 +1,9 @@
+<h1> <%= @category.name %> </h1>
+<br><br>
+<ul>
+<% @category.items.each do |item| %>
+<li>	<%= link_to item.name, item %> - <%= number_to_currency item.price %> </li>
+	<% end %>
+</ul>
+
+<%= link_to "Back to #{current_user.name}'s page", current_user %>

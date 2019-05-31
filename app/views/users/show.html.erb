@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="users.scss" >
 <div id="navbar" >
-History  |  Cart  |  <%= link_to "Profile", "#{current_user.id}/profile"%>   |   <%= link_to "Logout", logout_path %>
+History  |  <%= link_to "Cart", current_active_cart %>  |  <%= link_to "Profile", "#{current_user.id}/profile"%>   |   <%= link_to "Logout", logout_path %>
 </div>
 <h1> Welcome to our site! </h1>
 
@@ -8,12 +8,9 @@ History  |  Cart  |  <%= link_to "Profile", "#{current_user.id}/profile"%>   |  
   Name: <%= @user.name %>
 </h2>
 
-<p>Category:</p>
-<%= collection_select :item, :category_id, Category.all, :id, :name %>
-<%= submit_tag "Search" %>
-
-<p>Item:</p>
-<%= form_tag item_path, :method => 'get' do  %>
-  <%=  select_tag :id, options_for_select(Item.all.collect{ |c| [c.name, c.id] })  %>
-<%= submit_tag "Get Items", :name => nil %>
-<% end %>
+<p>Categories:</p>
+	<ul>
+	<% @categories.each do |category| %>
+<li>		<%= link_to category.name, category %> </li>
+	<% end %>
+	</ul>

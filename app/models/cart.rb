@@ -4,15 +4,13 @@ belongs_to :user
 has_many :line_items
 has_many :items, through: :line_items
 
-# before_save :update_total
-# before_create :update_status
+before_save :update_total
 
 
-  def add_item(item)
+  def add_item(item, quantity)
     current_item = line_items.find_by(item_id: item.id)
-
     if current_item
-      current_item.increment(:quantity)
+      current_item.quantity += quantity.to_i
     else
       current_item = line_items.build(item_id: item.id)
     end
@@ -24,16 +22,10 @@ has_many :items, through: :line_items
   end
 
   def calculate_total
-    self.line_items.collect { |item| item.product.price * item.quantity }.sum
+    self.line_items.collect { |item| item.item.price * item.quantity }.sum
   end
 
   private
-
-  def update_status
-    if self.status == nil?
-      self.status = "In progress"
-    end
-  end
 
   def update_total
     self.total_price = calculate_total

@@ -7,6 +7,6 @@ class ApplicationController < ActionController::Base
   end
 
   def current_active_cart
-    Cart.where(status: "active").first
+    current_user.carts.last
   end
 end
