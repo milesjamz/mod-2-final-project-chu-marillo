@@ -22,8 +22,9 @@ end
   end
 
   def destroy
+    @line_item = LineItem.find(params[:id])
     @line_item.destroy
-    redirect_to line_items_path
+    redirect_to cart_path(current_active_cart)
   end
 
   private
