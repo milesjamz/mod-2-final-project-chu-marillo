@@ -15,14 +15,13 @@ def create
 end
 
   def update
-      if @cart.update(cart_params)
-        redirect_to @cart
-      else
-        render :new
-      end
+    current_active_cart.update(:status => false)
+    @cart = Cart.create(user_id: current_user.id, total_price: 0,  status: true)
+    current_active_cart = @cart
+    redirect_to user_path(current_user)
   end
 
-  def delete
+  def destroy
     @cart = current_active_cart
     @cart.line_items.delete_all
     redirect_to cart_path(current_user.carts.last)

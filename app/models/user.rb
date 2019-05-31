@@ -13,6 +13,6 @@ class User < ApplicationRecord
   def create_cart
   	@cart = Cart.new(user_id: self.id, status: true, total_price: 0)
   	@cart.save
-end
+  end
 
 end

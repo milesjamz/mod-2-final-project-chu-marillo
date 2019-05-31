@@ -19,11 +19,10 @@ the cart's total price is <%= number_to_currency @cart.total_price %>
 
 
 <% if @cart.status == true %>
-<%= button_to 'Empty Cart', @cart, method: :delete %> 
-<%= link_to 'Checkout', users_path %><br><br>
+<%= button_to "Empty Cart", @cart, method: :delete, action: "post" %> 
+<%= button_to "Checkout", @cart, method: :patch, action: "post" %>
 <% end %>
 <%= link_to "Go back to #{current_user.name}s home page", user_path(current_user) %>
 
 
-<%= button_to "Checkout", user_path(@cart.user), method: :get %>
 <br>

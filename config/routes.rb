@@ -18,7 +18,7 @@ post 'line_items/:id/reduce' => "line_items#reduce_quantity", as: "line_item_red
 
   get 'users/:id/profile', to: 'users#profile'
 
-  resources :carts, only:[:show, :index, :new, :create, :edit, :update]
+  resources :carts
   resources :categories, only:[:show]
   resources :items, only:[:show]
   resources :comments, only:[:new, :create, :destroy]

@@ -4,7 +4,7 @@ belongs_to :user
 has_many :line_items
 has_many :items, through: :line_items
 
-before_save :update_total
+before_save :update_total, :give_points
 
 
   def add_item(item, quantity)
@@ -24,6 +24,13 @@ before_save :update_total
   def calculate_total
     self.line_items.collect { |item| item.item.price * item.quantity }.sum
   end
+
+    def give_points
+      current_points = self.user.points
+      final_points = current_points + self.total_price
+  self.user.update_attribute(:points,final_points)
+    end
+
 
   private
 

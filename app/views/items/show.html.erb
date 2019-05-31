@@ -7,7 +7,7 @@
   <%= form_for @line_item do |f| %>
     <%= f.hidden_field :item_id, value: @item.id %>
     <%= f.label :item_quantity %>
-    <%= f.number_field :quantity %>
+    <%= f.number_field(:quantity, in: 1..99) %>
     <%= f.submit "Add to cart" %>
   <% end %></p>
 <br><br><br>

@@ -1,4 +1,5 @@
-<%= current_user.name %>
+<%= current_user.name %><br>
+You've earned <%= current_user.points %> points!
 
 <h3>History</h3>
 
@@ -8,12 +9,13 @@
 <% if old_carts.length == 0 %>
 	You have no purchase history at this time! Get shoppin', NOW!
 <% else %>
+<ul>
 	<% old_carts.each do  |cart|  %>
-	<% cart.each do  |line_items|  %>
-	<%= line_items.item.name %> <br>
+<li> Cart #<%= link_to cart.id, cart %> - Checked out on <%= cart.updated_at.strftime("%B %d, %Y") %> - Total Price <%= number_to_currency cart.total_price %> </li>
 <% end %>
-	<% end %>
+</ul>
 <% end %>
 <% end %>
+
 <br><br>
 <%= link_to "Back to #{current_user.name}'s page", user_path(current_user) %>
